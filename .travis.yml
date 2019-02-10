@@ -6,7 +6,9 @@ install:
   - pip install kodi-addon-checker
 
 script:
-  - printf "%s\n" "$TRAVIS_COMMIT_RANGE"
+  - |
+    setenv COMMIT_COUNT $(($(git rev-list --count $TRAVIS_COMMIT_RANGE) - 1))
+    printf "%s\n" "$COMMIT_COUNT"
   - |
     rm -rf LICENSES/
     cd $HOME
