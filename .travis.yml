@@ -7,9 +7,5 @@ install:
 
 script:
   - |
-    setenv COMMIT_COUNT $(($(git rev-list --count $TRAVIS_COMMIT_RANGE) - 1))
-    printf "%s\n" "$COMMIT_COUNT"
-  - |
-    rm -rf LICENSES/
-    cd $HOME
-    kodi-addon-checker $TRAVIS_BUILD_DIR --branch=isengard
+    export COMMIT_COUNT=$(($(git rev-list --count $TRAVIS_COMMIT_RANGE) - 1))
+    printf "%s" "$COMMIT_COUNT"
